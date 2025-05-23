@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Image from 'next/image';
-import MainImage from './../public/dimi.jpg';
-import WineBg from './../public/wine-bg.avif';
+import WineBg from './../public/wine-bg.jpg';
+import Nav from './components/navbar/page';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,8 +37,12 @@ export default function RootLayout({
           className='absolute inset-0 z-0 h-full w-full object-cover'
           priority
         />
-
-        <div className='relative z-10'>{children}</div>
+        <div className='relative z-10 flex flex-col'>
+          <div className='z-50 w-full fixed top-0 p-6'>
+            <Nav />
+          </div>
+          <div className='pt-24'>{children}</div>
+        </div>
       </body>
     </html>
   );

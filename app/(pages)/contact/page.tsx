@@ -1,9 +1,19 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Mail, Phone, Facebook } from 'lucide-react';
 import Link from 'next/link';
 import BackButton from '@/app/components/backbutton/page';
+import Loader from '@/app/components/loader/page';
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) return <Loader />;
   return (
     <div className='relative flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-b to-gray-800 text-white'>
       <BackButton />
